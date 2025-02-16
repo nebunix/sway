@@ -1,4 +1,4 @@
-{ systemInformation, ... }:
+{ config, systemInformation, ... }:
 
 {
   hardware.graphics.enable = true;
@@ -22,8 +22,8 @@
           };
 
           keybindings = {
-            "${modifier}+Return" = "exec kitty";
-            "${modifier}+f" = "exec kitty";
+            "${modifier}+Return" = "exec ${config.nebunix.defaultPrograms.terminal}";
+            "${modifier}+f" = "exec ${config.nebunix.defaultPrograms.browser}";
 
             "${modifier}+j" = "focus down";
             "${modifier}+k" = "focus up";

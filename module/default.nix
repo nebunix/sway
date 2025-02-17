@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   systemInformation,
   ...
 }:
@@ -12,10 +11,6 @@
   home-manager.users."${systemInformation.userName}" =
     { ... }:
     {
-      home.packages = with pkgs; [
-        brightnessctl
-      ];
-
       wayland.windowManager.sway =
         let
           modifier = "Mod4";

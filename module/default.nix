@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   systemInformation,
   ...
@@ -32,7 +33,9 @@
               middle_emulation = "enabled";
 
               xkb_layout = config.nebunix.localization.xkb.layout;
-              xkb_variant = config.nebunix.localization.xkb.variant;
+              xkb_variant = lib.mkIf (
+                config.nebunix.localization.xkb.variant != ""
+              ) config.nebunix.localization.xkb.variant;
             };
 
             keybindings = {

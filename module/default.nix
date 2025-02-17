@@ -1,4 +1,9 @@
-{ config, systemInformation, ... }:
+{
+  config,
+  pkgs,
+  systemInformation,
+  ...
+}:
 
 {
   hardware.graphics.enable = true;
@@ -6,6 +11,10 @@
   home-manager.users."${systemInformation.userName}" =
     { ... }:
     {
+      home.packages = with pkgs; [
+        brightnessctl
+      ];
+
       wayland.windowManager.sway =
         let
           modifier = "Mod4";
@@ -63,6 +72,9 @@
               "${modifier}+s" = "splitv";
 
               "${modifier}+Shift+f" = "floating toggle";
+
+              "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+              "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
             };
           };
         };

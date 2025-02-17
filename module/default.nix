@@ -30,6 +30,9 @@
             input."*" = {
               tap = "enabled";
               middle_emulation = "enabled";
+
+              xkb_layout = config.nebunix.localization.xkb.layout;
+              xkb_variant = config.nebunix.localization.xkb.variant;
             };
 
             keybindings = {
